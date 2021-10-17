@@ -1,9 +1,11 @@
 import datetime
-
-from player import Player
+import transfer
+import player
 
 class League:
     league = None
+    obj = Player()
+    te
 
     @classmethod
     def get(self):
@@ -53,7 +55,10 @@ class League:
 		    s = t.get_player() + ' => ' + t.get_team() + 'for $'
 		    print(s)
 
+    # can we pass in a Player object instead of just the name of a player?
+    def do_transfer(self, obj, new_team):
+        prev_team = obj.get_team()
+        print(prev_team)
 
-    # def do_transfer(self, player, new_team):
-    #     player = player.get_team()
+
 
