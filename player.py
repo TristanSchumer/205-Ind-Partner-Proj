@@ -13,8 +13,8 @@ class Player:
         self.team = team
 
     def to_string(self):
-        s = self.name + ' age =' + str(self.age) + '; team =' + self.team + '; position =' + self.position + '; nationality =' + self.nationality + '; price =' + str(self.price)
-        return s
+        return "Name: %s, Age: %i, Price: %i, Team: %s"% (self.get_name(), self.get_age(), self.get_price(), self.get_team())
+
 
     def get_name(self):
         return self.name

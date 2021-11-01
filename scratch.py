@@ -22,11 +22,25 @@ def main():
 
     Kante = player.Player("N'Golo Kante", 21, 100000000, team_3)
 
+    league1.add_player(Salah)
+    league1.add_player(Ronaldo)
+    league1.add_player(Kante)
+
+    league1.add_teams(team_1)
+    league1.add_teams(team_2)
+    league1.add_teams(team_3)
+
     # print("Kante's age is", Kante.age)
     # print("Ronaldo's price is $", Ronaldo.price)
-    # print("Salah's team is", Salah.team)
+    for i in league1.get_teams():
+        print(i.to_string())
 
-    league1.do_transfer(Kante, team_1)
+    for i in league1.get_players():
+        print(i.to_string())
+    # print(league1.get_players())
+    # print(league1.get_teams())
+
+    # league1.do_transfer(Kante, team_1)
 
 
 main()
