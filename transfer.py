@@ -25,5 +25,8 @@ class Transfer:
 
     def get_transfer_date(self):
         return self.transfer_date
+        
+
+    
 
 
