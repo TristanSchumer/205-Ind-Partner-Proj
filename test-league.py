@@ -21,9 +21,9 @@ class TestTransfer(unittest.TestCase):
         manager3 = "Thomas Tuchel"
 
         # we'll use the books and the patrons in the tests, so make them class variables
-        cls.team_1 = team.Team(team1, 0, 2, manager1)
-        cls.team_2 = team.Team(team2, 0, 5, manager2)
-        cls.team_3 = team.Team(team3, 0, 1, manager3)
+        cls.team_1 = team.Team(team1, 1000000, 2, manager1)
+        cls.team_2 = team.Team(team2, 1000000, 5, manager2)
+        cls.team_3 = team.Team(team3, 1000000, 1, manager3)
         cls.Salah = player.Player('Mohamed Salah')
         cls.Ronaldo = player.Player('Cristiano Ronaldo')
         cls.Kante = player.Player("N'Golo Kante")
@@ -55,7 +55,7 @@ class TestTransfer(unittest.TestCase):
         
         # transfer salah to man u
         # TODO: UNSURE HOW TO ACCESS OBJ IN THIS SENSE
-        self.league.do_transfer(obj, self.team_2)
+        self.league.do_transfer(self.Salah, self.team_2)
         
 
 

@@ -1,14 +1,16 @@
+from team import Team
 class Player:
     age: int
     price: int
+    team: str
 
-    def __init__(self, name):
+    def __init__(self, name, age, price, team: Team):
         self.name = name
-        self.age = Player.age
-        self.price = Player.price
+        self.age = age
+        self.price = price
         self.position = Player.get_position
         self.nationality = Player.get_nationality
-        self.team = Player.get_team
+        self.team = team
 
     def to_string(self):
         s = self.name + ' age =' + str(self.age) + '; team =' + self.team + '; position =' + self.position + '; nationality =' + self.nationality + '; price =' + str(self.price)

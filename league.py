@@ -1,10 +1,10 @@
 import datetime
+from team import Team
 import transfer
 import player
 
 class League:
     league = None
-    obj = player.Player()
 
     @classmethod
     def get(self):
@@ -34,7 +34,7 @@ class League:
 	    for p in self.players:
 	    	if p.get_name() == name:
         	    players.append(p)
-		return players
+	    return players
 
     def find_player_by_name(self, name):
 	    for p in self.players:
@@ -57,21 +57,22 @@ class League:
     # to do a transfer, we need two different teams, a player, the players price, and both of teams budgets to be affected by transfer
 	# if a team doesnt have enough money for player, the budget cannot go through
     def do_transfer(self, obj, team):
-	    prev_team = obj.get_team()
+	    prev_team = obj.team
 	    new_team = team
-	    player_price = obj.get_price()
-	    prev_team_budget = prev_team.get_transfer_budget()
-	    new_team_budget = new_team.get_transfer_budget()
+	    player_price = obj.price
+		# need to figure out new way of setting transfer_budget
+	    prev_team_budget = prev_team.transfer_budget
+	    new_team_budget = new_team.transfer_budget
 
-	    if new_team_budget <= player_price:
-		    print("%s does not have enough a large enough transfer budget to afford %s", new_team, obj.get_name())
+	    if new_team_budget < player_price:
+		    print("%s does not have enough a large enough transfer budget to afford %s" % (new_team.get_name(), obj.get_name()))
 
 	    else:
 		    new_team_budget = new_team_budget - player_price
 		    prev_team_budget = prev_team_budget + player_price
-		    obj.team = new_team.get_name()
+		    obj.team = new_team.name
 			# add player to teams set of players
-		    print("%s has transfered to %s from %s for %i", obj.get_name(), new_team.get_name(), prev_team.get_name(), obj.get_price())
+		    print("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), new_team.get_name(), prev_team.get_name(), obj.get_price()))
     
 	    return None
 

@@ -1,7 +1,7 @@
 # team: the league has instances of team
 
 class Team:
-    def __init__(self, name, tranfser_budget, ranking, manager):
+    def __init__(self, name, tranfser_budget: int, ranking, manager):
         self.name = name
         self.transfer_budget = tranfser_budget
         self.ranking = ranking
