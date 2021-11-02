@@ -6,6 +6,7 @@ class Team:
         self.transfer_budget = tranfser_budget
         self.ranking = ranking
         self.manager = manager
+        self.players = set()
 
     def to_string(self):
         return "Team: %s, Transfer Budget: %i, Ranking: %i, Manager: %s"% (self.get_name(), self.get_transfer_budget(), self.get_ranking(), self.get_manager())

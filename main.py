@@ -30,6 +30,10 @@ def main():
     league1.add_teams(team_2)
     league1.add_teams(team_3)
 
+    team_1.players.add(Salah)
+    for i in team_1.players:
+        print(i.get_name())
+
     print("\n")
     # prints every team in league with info
     for i in league1.get_teams():
@@ -72,5 +76,9 @@ def main():
     # prints each player in league with info
     for i in league1.get_players():
         print(i.to_string())
+
+    league1.show_transfers()
+
+    league1.test(league1.do_transfer(Ronaldo, team_1))
 
 main()

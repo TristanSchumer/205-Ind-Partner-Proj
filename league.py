@@ -51,8 +51,7 @@ class League:
     # might not work right if we want to show both the previous team and new team
     def show_transfers(self):
 	    for t in self.transfers:
-		    s = t.get_player() + ' => ' + t.get_team() + 'for $'
-		    print(s)
+		    print(t)
 
     # to do a transfer, we need two different teams, a player, the players price, and both of teams budgets to be affected by transfer
 	# if a team doesnt have enough money for player, the budget cannot go through
@@ -67,6 +66,7 @@ class League:
 
 	    if new_team_budget < player_price:
 		    print("%s does not have enough a large enough transfer budget to afford %s" % (new_team.get_name(), obj.get_name()))
+		    return False
 
 	    else:
 		    team.transfer_budget = new_team_budget - player_price
@@ -75,9 +75,19 @@ class League:
 			# add player to teams set of players
 		    print("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), team.get_name(), obj.team.get_name(), obj.get_price()))
 		   
+		    
+		    self.transfers.add("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), team.get_name(), obj.team.get_name(), obj.get_price()))
 		    obj.team = new_team
 
-	    return None
+		    return True
+
+    # def test(self, test: bool):
+	#     if test == True:
+	# 	    self.team.players.add()
+    #         print("DOG")
+		
+	#     else: 
+	# 	    print("CAT")
 
 
 
