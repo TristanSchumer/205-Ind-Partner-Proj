@@ -16,11 +16,11 @@ def main():
     team_2 = team.Team(team2, 100000000, 5, manager2)
     team_3 = team.Team(team3, 100000000, 1, manager3)
 
-    Salah = player.Player('Mohamed Salah', 27, 100000000, team_1)
+    Salah = player.Player('Mohamed Salah', 29, 100000000, team_1)
  
-    Ronaldo = player.Player('Cristiano Ronaldo', 31, 100000000, team_2)
+    Ronaldo = player.Player('Cristiano Ronaldo', 36, 100000000, team_2)
 
-    Kante = player.Player("N'Golo Kante", 21, 100000000, team_3)
+    Kante = player.Player("N'Golo Kante", 30, 100000000, team_3)
 
     league1.add_player(Salah)
     league1.add_player(Ronaldo)
