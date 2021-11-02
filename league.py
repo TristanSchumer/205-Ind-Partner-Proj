@@ -61,19 +61,22 @@ class League:
 	    new_team = team
 	    player_price = obj.price
 		# need to figure out new way of setting transfer_budget
-	    prev_team_budget = prev_team.transfer_budget
+	    prev_team_budget = obj.team.transfer_budget
 	    new_team_budget = new_team.transfer_budget
+	    # print(new_team_budget, prev_team_budget)
 
 	    if new_team_budget < player_price:
 		    print("%s does not have enough a large enough transfer budget to afford %s" % (new_team.get_name(), obj.get_name()))
 
 	    else:
-		    new_team_budget = new_team_budget - player_price
-		    prev_team_budget = prev_team_budget + player_price
-		    obj.team = new_team.name
+		    team.transfer_budget = new_team_budget - player_price
+		    obj.team.transfer_budget = prev_team_budget + player_price
+			
 			# add player to teams set of players
-		    print("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), new_team.get_name(), prev_team.get_name(), obj.get_price()))
-    
+		    print("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), team.get_name(), obj.team.get_name(), obj.get_price()))
+		   
+		    obj.team = new_team
+
 	    return None
 
 

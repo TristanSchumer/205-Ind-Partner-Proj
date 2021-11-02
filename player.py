@@ -1,4 +1,5 @@
 from team import Team
+import team
 class Player:
     age: int
     price: int
@@ -13,8 +14,7 @@ class Player:
         self.team = team
 
     def to_string(self):
-        return "Name: %s, Age: %i, Price: %i, Team: %s"% (self.get_name(), self.get_age(), self.get_price(), self.get_team())
-
+        return "Name: %s, Age: %i, Price: %i, Team: %s"% (self.get_name(), self.get_age(), self.get_price(), self.team.name)
 
     def get_name(self):
         return self.name
