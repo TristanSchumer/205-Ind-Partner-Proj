@@ -30,14 +30,17 @@ def main():
     league1.add_teams(team_2)
     league1.add_teams(team_3)
 
+    print("\n")
     # prints every team in league with info
     for i in league1.get_teams():
         print(i.to_string())
 
+    print("\n")
     # prints each player in league with info
     for i in league1.get_players():
         print(i.to_string())
 
+    print("\n")
     # transfer example money
     print("%s transfer budget: %i" % (team_2.get_name(), team_2.transfer_budget))
     print("%s transfer budget: %i" % (team_3.get_name(), team_3.transfer_budget))
@@ -60,6 +63,14 @@ def main():
     print("%s transfer budget: %i" % (team_3.get_name(), team_3.transfer_budget))
     
 
-    
+    print("\n")
+    # prints every team in league with info
+    for i in league1.get_teams():
+        print(i.to_string())
+
+    print("\n")
+    # prints each player in league with info
+    for i in league1.get_players():
+        print(i.to_string())
 
 main()
