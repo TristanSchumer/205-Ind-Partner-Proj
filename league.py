@@ -97,7 +97,7 @@ class League:
 
 	    else:
 		    team.transfer_budget = new_team_budget - player_price
-		    obj.team.transfer_budget = prev_team_budget + new_team_budget
+		    obj.team.transfer_budget = prev_team_budget + team.transfer_budget
 			
 			# add player to teams set of players
 		    print("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), team.get_name(), obj.team.get_name(), obj.get_price()))
