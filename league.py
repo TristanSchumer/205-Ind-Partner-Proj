@@ -29,12 +29,11 @@ class League:
     def get_teams(self):
 	    return self.teams
 
-    def find_player(self, name):
-	    players = []
-	    for p in self.players:
-	    	if p.get_name() == name:
-        	    players.append(p)
-	    return players
+    def find_team_by_name(self, name):
+	    for t in self.teams:
+		    if t.get_name() == name:
+			    return True
+	    return False
 
     def find_player_by_name(self, name):
 	    for p in self.players:
@@ -51,7 +50,8 @@ class League:
     # might not work right if we want to show both the previous team and new team
     def show_transfers(self):
 	    for t in self.transfers:
-		    print(t)
+		    return t
+	    return None
 
     # to do a transfer, we need two different teams, a player, the players price, and both of teams budgets to be affected by transfer
 	# if a team doesnt have enough money for player, the budget cannot go through
