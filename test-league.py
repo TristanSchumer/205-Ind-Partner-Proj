@@ -75,7 +75,6 @@ class TestTransfer(unittest.TestCase):
     def tearDown(self):
         # called after every test
         print('tearDown()')
-        # self.league.return_all_teams() #THIS ISNT CREATED YET
 
     # --------------------------------------------------------------------------------------
 
@@ -86,22 +85,7 @@ class TestTransfer(unittest.TestCase):
     #     # TODO: UNSURE HOW TO ACCESS OBJ IN THIS SENSE
     #     self.league.do_transfer(self.Salah, self.team_2)
         
-
-
-    # --------------------------------------------------------------------------------------
-
-   # TODO: FINISH
-    # def test_transfer_correct(self):
-    #     print("test transfer correct")
-    #     # this test the correct implementation of transferring a player: it will succeed
-        
-    #     # transfer salah to man u
-    #     self.league.do_transfer(self.Salah, self.team_2)
-    #     # show transfer
-    #     rc = self.league.show_transfers()
-    #     self.assertTrue(rc)
-
-    # --------------------------------------------------------------------------------------
+ # --------------------------------------------------------------------------------------
 
     def test_transfer_players(self):
         # transfer kante from chelsea to liverpool
@@ -112,16 +96,6 @@ class TestTransfer(unittest.TestCase):
         # this should fail (man u has no money to buy kante)
         c = self.league.do_transfer(self.Kane, self.team_1)
         self.assertIsNone(c) 
-
-    # --------------------------------------------------------------------------------------
-
-    def test_transfer_budget(self):
-        # transfers player to team 2
-        self.league.do_transfer(self.Salah, self.team_2)
-        # records new teams budget after transfer
-        new_team_budget = self.team_1.get_transfer_budget()
-        # compares new_team_budget to what it should be
-        self.assertEqual(new_team_budget, 200000000)
 
     # --------------------------------------------------------------------------------------
     
@@ -156,11 +130,12 @@ class TestTransfer(unittest.TestCase):
     # --------------------------------------------------------------------------------------
 
     def test_show_transfers(self):
-        t = self.league.do_transfer(self.Vardy, self.team_5)
-
-        t = self.league.show_transfers()
-
-        self.assertEqual(t, )
+        # intiate transfer
+        self.league.do_transfer(self.Vardy, self.team_5)
+        # find transfer in show transfers
+        s = self.league.show_transfers()
+        # compare transfer in show_tranfers to string of what transfer should be
+        self.assertEqual(s, "Jamie Vardy has transfered to Wolves from Leicester for 100000000 Euros")
 
 
 
