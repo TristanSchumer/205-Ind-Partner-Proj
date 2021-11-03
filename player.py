@@ -19,12 +19,6 @@ class Player:
     def get_name(self):
         return self.name
 
-    def get_position(self):
-        return self.position
-
-    def get_nationality(self):
-        return self.nationality
-
     def get_team(self):
         return self.team
 

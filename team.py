@@ -23,8 +23,3 @@ class Team:
     def get_manager(self):
         return self.manager
 
-    # def __eq__(self, other):
-    #     return self.transfer_budget == other.transfer_budget
-
-    # def __hash__(self):
-    #     return hash(self.transfer_budget)
