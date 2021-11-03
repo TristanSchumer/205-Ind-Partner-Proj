@@ -1,4 +1,3 @@
-#from _typeshed import Self
 import unittest
 import league
 import team
@@ -86,26 +85,31 @@ class TestTransfer(unittest.TestCase):
 
     def test_incorrect_do_transfer(self):
         # this tests the incorrect version of do_transfer to library: this test will fail
-        # transfer kante from chelsea to liverpool
-        c = self.league.do_transfer(self.Ronaldo, self.team_8)
+        # transfer Ronaldo from Manchester United to Arsenal
+        e = self.Ronaldo.get_team()
+        c = self.league.incorrect_do_transfer(self.Ronaldo, self.team_8)
         self.assertIsNone(c)
 
-        # try to transfer kante to man u
-        # this should fail (man u has no money to buy kante)
-        c = self.league.do_transfer(self.Traore, self.team_8)
-        self.assertIsNotNone(c) 
+        # try to transfer Traore to Arsenal
+        # this should fail (Arsenal has no money to buy Traore)
+        c = self.league.incorrect_do_transfer(self.Traore, self.team_8)
+        t = e.get_transfer_budget()
+        
+        self.assertEqual(t, 200000000)
         
  # --------------------------------------------------------------------------------------
 
-    def test_transfer_players(self):
+    def test_do_transfer(self):
         # transfer kante from chelsea to liverpool
+        e = self.Kante.get_team()
         c = self.league.do_transfer(self.Kante, self.team_1)
         self.assertIsNone(c)
 
         # try to transfer kane to liverpool
         # this should fail (liverpool has no money to buy kane)
         c = self.league.do_transfer(self.Kane, self.team_1)
-        self.assertIsNone(c) 
+        t = e.get_transfer_budget()
+        self.assertEqual(t, 200000000)
 
     # --------------------------------------------------------------------------------------
     
@@ -139,15 +143,15 @@ class TestTransfer(unittest.TestCase):
 
     # --------------------------------------------------------------------------------------
 
-    def test_show_transfers(self):
-        # intiate transfer
-        t = self.league.do_transfer(self.Vardy, self.team_5)
-        # find transfer in show transfers
-        s = self.league.show_transfers()
+    # def test_show_transfers(self):
+    #     # intiate transfer
+    #     t = self.league.do_transfer(self.Vardy, self.team_5)
+    #     # find transfer in show transfers
+    #     s = self.league.show_transfers()
 
         
-        # compare transfer in show_tranfers to string of what transfer should be
-        self.assertTrue()
+    #     # compare transfer in show_tranfers to string of what transfer should be
+    #     self.assertTrue()
 
 
 
