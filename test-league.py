@@ -119,39 +119,48 @@ class TestTransfer(unittest.TestCase):
         # transfers player to team 2
         self.league.do_transfer(self.Salah, self.team_2)
         # records new teams budget after transfer
-        new_team_budget = self.team_2.get_transfer_budget()
+        new_team_budget = self.team_1.get_transfer_budget()
         # compares new_team_budget to what it should be
-        self.assertEqual(new_team_budget, 0)
+        self.assertEqual(new_team_budget, 200000000)
 
     # --------------------------------------------------------------------------------------
     
-    def test_team_players(self):
-        # create new player and add to team
-        Tristan = player.Player("Tristan Schumer", 20, 100000000, self.team_6)
-        self.team_6.players.add(Tristan)
-
-        # get name of player on team
-        p = list(self.team_6.players)[0].get_name()
-
-        # compare name of player to name
-        self.assertEqual(p, "Tristan Schumer")
+    def test_find_team_by_name(self):
+        # create name of team
+        name = "Manchester City"
+        # find team in set of teams
+        p = self.league.find_team_by_name(name)
+        # assert true if team is found
+        self.assertTrue(p)
 
     # --------------------------------------------------------------------------------------
 
     def test_find_player_by_name(self):
         # create name of player
         name = "Adama Traore"
-        
         # find player in set of player
         p = self.league.find_player_by_name(name)
-
         # assert true if player is found
         self.assertTrue(p)
 
-    # def test_find_team_by_rank(self):
-    #     rank = 6
+    # --------------------------------------------------------------------------------------
 
-        
+    def test_find_team_by_rank(self):
+        # create test rank
+        rank = 6
+        # get team ranked at rank 6
+        t = self.league.find_team_by_rank(rank)
+        # compare t to team at rank 6
+        self.assertEqual(t.get_name(), "Wolves")
+
+    # --------------------------------------------------------------------------------------
+
+    def test_show_transfers(self):
+        t = self.league.do_transfer(self.Vardy, self.team_5)
+
+        t = self.league.show_transfers()
+
+        self.assertEqual(t, )
 
 
 
