@@ -51,34 +51,34 @@ class TestTransfer(unittest.TestCase):
     def tearDown(self):
         # called after every test
         print('tearDown()')
-        self.league.return_all_teams() #THIS ISNT CREATED YET
+        #self.league.return_all_teams() #THIS ISNT CREATED YET
 
     # --------------------------------------------------------------------------------------
 
-    def test_return_incorrect(self):
-        # this tests the incorrect version of do_transfer to library: this test will fail
+    # def test_return_incorrect(self):
+    #     # this tests the incorrect version of do_transfer to library: this test will fail
         
-        # transfer salah to man u
-        # TODO: UNSURE HOW TO ACCESS OBJ IN THIS SENSE
-        self.league.do_transfer(self.Salah, self.team_2)
+    #     # transfer salah to man u
+    #     # TODO: UNSURE HOW TO ACCESS OBJ IN THIS SENSE
+    #     self.league.do_transfer(self.Salah, self.team_2)
         
 
 
     # --------------------------------------------------------------------------------------
 
-    TODO: FINISH
-    def test_transfer_correct(self):
-        print("test transfer correct")
-        # this test the correct implementation of transferring a player: it will succeed
+    #TODO: FINISH
+    # def test_transfer_correct(self):
+    #     print("test transfer correct")
+    #     # this test the correct implementation of transferring a player: it will succeed
         
-        # transfer salah to man u
-        self.league.do_transfer(self.Salah, self.team_2)
-        # show transfer
-        rc = self.league.show_transfers()
-        self.assertTrue(rc)
+    #     # transfer salah to man u
+    #     self.league.do_transfer(self.Salah, self.team_2)
+    #     # show transfer
+    #     rc = self.league.show_transfers()
+    #     self.assertTrue(rc)
 
     # --------------------------------------------------------------------------------------
-    
+    # DONE
     def test_transfer_one(self):
         # transfer salah from liverpool to man u
         c = self.league.do_transfer(self.Salah, self.team_2)
@@ -96,6 +96,7 @@ class TestTransfer(unittest.TestCase):
     # --------------------------------------------------------------------------------------
 
         
-        
+if __name__ == '__main__':
+    unittest.main()
 
 
