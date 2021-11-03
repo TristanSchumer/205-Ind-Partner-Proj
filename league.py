@@ -88,6 +88,9 @@ class League:
 		
 	#     else: 
 	# 	    print("CAT")
+		    self.transfers.add("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), team.get_name(), obj.team.get_name(), obj.get_price()))
+		    obj.team = new_team
+	    return None
 
 
 
