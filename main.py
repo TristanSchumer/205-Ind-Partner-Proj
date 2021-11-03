@@ -81,15 +81,5 @@ def main():
     for i in league1.get_players():
         print(i.to_string())
 
-    print("\n")
-    league1.show_transfers()
-    print("\n")
-
-
-
-    for i in team_1.players:
-        print(i.get_name())
-
-    print(team_1.players[1])
 
 main()
