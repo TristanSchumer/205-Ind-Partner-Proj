@@ -62,7 +62,6 @@ class League:
 		# need to figure out new way of setting transfer_budget
 	    prev_team_budget = obj.team.transfer_budget
 	    new_team_budget = new_team.transfer_budget
-	    # print(new_team_budget, prev_team_budget)
 
 	    if new_team_budget < player_price:
 		    print("%s does not have enough a large enough transfer budget to afford %s" % (new_team.get_name(), obj.get_name()))
@@ -83,25 +82,34 @@ class League:
 		
 	    return None
 
-    # def compare_budgets(self, obj, team):
-    #     prev_team = obj.team
-	#     new_team = team
-	#     player_price = obj.price
-	# 	# need to figure out new way of setting transfer_budget
-	#     prev_team_budget = obj.team.transfer_budget
-	#     new_team_budget = new_team.transfer_budget
+    def incorrect_do_transfer(self, obj, team):
+	    prev_team = obj.team
+	    new_team = team
+	    player_price = obj.price
+		# need to figure out new way of setting transfer_budget
+	    prev_team_budget = obj.team.transfer_budget
+	    new_team_budget = new_team.transfer_budget
+	    # print(new_team_budget, prev_team_budget)
 
+	    if new_team_budget < player_price:
+		    print("%s does not have enough a large enough transfer budget to afford %s" % (new_team.get_name(), obj.get_name()))
+		    # return False
 
-    # def test(self, test: bool):
-	#     if test == True:
-	# 	    self.team.players.add()
-    #         print("DOG")
+	    else:
+		    team.transfer_budget = new_team_budget - player_price
+		    obj.team.transfer_budget = prev_team_budget + new_team_budget
+			
+			# add player to teams set of players
+		    print("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), team.get_name(), obj.team.get_name(), obj.get_price()))
+		   
+		    
+		    self.transfers.add("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), team.get_name(), obj.team.get_name(), obj.get_price()))
+		    obj.team = new_team
+
+		    # return True
 		
-	#     else: 
-	# 	    print("CAT")
-		#     self.transfers.add("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), team.get_name(), obj.team.get_name(), obj.get_price()))
-		#     obj.team = new_team
-	    # return None
+	    return None
+
 
 
 
