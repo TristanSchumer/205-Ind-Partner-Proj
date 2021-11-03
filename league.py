@@ -47,10 +47,8 @@ class League:
 			    return t
 	    return None
 
-    # might not work right if we want to show both the previous team and new team
-    def show_transfers(self):
-	    for t in self.transfers:
-		    return t
+    def relegate(self):
+	    self.teams.pop()
 	    return None
 
     # to do a transfer, we need two different teams, a player, the players price, and both of teams budgets to be affected by transfer
@@ -93,7 +91,7 @@ class League:
 
 	    if new_team_budget < player_price:
 		    print("%s does not have enough a large enough transfer budget to afford %s" % (new_team.get_name(), obj.get_name()))
-		    # return False
+		    #return not None
 
 	    else:
 		    team.transfer_budget = new_team_budget - player_price
@@ -102,13 +100,12 @@ class League:
 			# add player to teams set of players
 		    print("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), team.get_name(), obj.team.get_name(), obj.get_price()))
 		   
-		    
+		
 		    self.transfers.add("%s has transfered to %s from %s for %i Euros" % (obj.get_name(), team.get_name(), obj.team.get_name(), obj.get_price()))
 		    obj.team = new_team
 
-		    # return True
+		    return None
 		
-	    return None
 
 
 

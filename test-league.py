@@ -21,6 +21,7 @@ class TestTransfer(unittest.TestCase):
         team6 = "Manchester City"
         team7 = "Leicester"
         team8 = "Arsenal"
+        teamRel = "Everton"
 
         manager1 = "Jurgen Klopp"
         manager2 = "Ole Gunnar Solskjaer"
@@ -30,6 +31,7 @@ class TestTransfer(unittest.TestCase):
         manager6 = "Pep Guardiola"
         manager7 = "Brendon Rodgers"
         manager8 = "Mikel Arteta"
+        managerRel = "Rafeal Benitez"
 
         # we'll use the books and the patrons in the tests, so make them class variables
         cls.team_1 = team.Team(team1, 100000000, 2, manager1)
@@ -40,6 +42,7 @@ class TestTransfer(unittest.TestCase):
         cls.team_6 = team.Team(team6, 100000000, 3, manager6)
         cls.team_7 = team.Team(team7, 100000000, 7, manager7)
         cls.team_8 = team.Team(team8, 100000000, 8, manager8)
+        cls.team_Rel = team.Team(teamRel, 100000000, 18, managerRel)
 
 
         cls.Salah = player.Player('Mohamed Salah', 29, 100000000, cls.team_1)
@@ -139,16 +142,16 @@ class TestTransfer(unittest.TestCase):
 
     # --------------------------------------------------------------------------------------
 
-    def test_show_transfers(self):
-        # intiate transfer
-        t = self.league.do_transfer(self.Vardy, self.team_5)
-        # find transfer in show transfers
-        s = self.league.show_transfers()
+    def test_relegate(self):
+        # add team to team set
+        self.league.add_teams(self.team_Rel)
+        # relegate team
+        self.league.relegate()
+        # check to see if team is in team set
+        name = "Evertone"    
+        r = self.league.find_team_by_name(name)
 
-        
-        # compare transfer in show_tranfers to string of what transfer should be
-        self.assertTrue()
-
+        self.assertFalse(r)
 
 
 if __name__ == '__main__':
