@@ -20,6 +20,7 @@ class TestTransfer(unittest.TestCase):
         team5 = "Wolves"
         team6 = "Manchester City"
         team7 = "Leicester"
+        team8 = "Arsenal"
 
         manager1 = "Jurgen Klopp"
         manager2 = "Ole Gunnar Solskjaer"
@@ -28,6 +29,7 @@ class TestTransfer(unittest.TestCase):
         manager5 = "Bruno Lage"
         manager6 = "Pep Guardiola"
         manager7 = "Brendon Rodgers"
+        manager8 = "Mikel Arteta"
 
         # we'll use the books and the patrons in the tests, so make them class variables
         cls.team_1 = team.Team(team1, 100000000, 2, manager1)
@@ -36,7 +38,8 @@ class TestTransfer(unittest.TestCase):
         cls.team_4 = team.Team(team4, 100000000, 4, manager4)
         cls.team_5 = team.Team(team5, 100000000, 6, manager5)
         cls.team_6 = team.Team(team6, 100000000, 3, manager6)
-        cls.team_7 = team.Team(team7, 100000000, 3, manager7)
+        cls.team_7 = team.Team(team7, 100000000, 7, manager7)
+        cls.team_8 = team.Team(team8, 100000000, 8, manager8)
 
 
         cls.Salah = player.Player('Mohamed Salah', 29, 100000000, cls.team_1)
@@ -46,6 +49,7 @@ class TestTransfer(unittest.TestCase):
         cls.Traore = player.Player("Adama Traore", 25, 100000000, cls.team_5)
         cls.Grealish = player.Player("Jack Grealish", 24, 100000000, cls.team_6)
         cls.Vardy = player.Player("Jamie Vardy", 34, 100000000, cls.team_7)
+        cls.Xhaka = player.Player("Granit Xhaka", 29, 100000000, cls.team_8)
 
         cls.league.add_player(cls.Salah)
         cls.league.add_player(cls.Ronaldo)
@@ -54,6 +58,7 @@ class TestTransfer(unittest.TestCase):
         cls.league.add_player(cls.Traore)
         cls.league.add_player(cls.Grealish)
         cls.league.add_player(cls.Vardy)
+        cls.league.add_player(cls.Xhaka)
 
         cls.league.add_teams(cls.team_1)
         cls.league.add_teams(cls.team_2)
@@ -62,6 +67,7 @@ class TestTransfer(unittest.TestCase):
         cls.league.add_teams(cls.team_5)
         cls.league.add_teams(cls.team_6)
         cls.league.add_teams(cls.team_7)
+        cls.league.add_teams(cls.team_8)
 
     @classmethod
     def tearDownClass(cls):
@@ -75,33 +81,21 @@ class TestTransfer(unittest.TestCase):
     def tearDown(self):
         # called after every test
         print('tearDown()')
-        # self.league.return_all_teams() #THIS ISNT CREATED YET
 
     # --------------------------------------------------------------------------------------
 
-    # def test_return_incorrect(self):
-    #     # this tests the incorrect version of do_transfer to library: this test will fail
+    def test_incorrect_do_transfer(self):
+        # this tests the incorrect version of do_transfer to library: this test will fail
+        # transfer kante from chelsea to liverpool
+        c = self.league.do_transfer(self.Ronaldo, self.team_8)
+        self.assertIsNone(c)
+
+        # try to transfer kante to man u
+        # this should fail (man u has no money to buy kante)
+        c = self.league.do_transfer(self.Traore, self.team_8)
+        self.assertIsNotNone(c) 
         
-    #     # transfer salah to man u
-    #     # TODO: UNSURE HOW TO ACCESS OBJ IN THIS SENSE
-    #     self.league.do_transfer(self.Salah, self.team_2)
-        
-
-
-    # --------------------------------------------------------------------------------------
-
-   # TODO: FINISH
-    # def test_transfer_correct(self):
-    #     print("test transfer correct")
-    #     # this test the correct implementation of transferring a player: it will succeed
-        
-    #     # transfer salah to man u
-    #     self.league.do_transfer(self.Salah, self.team_2)
-    #     # show transfer
-    #     rc = self.league.show_transfers()
-    #     self.assertTrue(rc)
-
-    # --------------------------------------------------------------------------------------
+ # --------------------------------------------------------------------------------------
 
     def test_transfer_players(self):
         # transfer kante from chelsea to liverpool
@@ -112,16 +106,6 @@ class TestTransfer(unittest.TestCase):
         # this should fail (liverpool has no money to buy kane)
         c = self.league.do_transfer(self.Kane, self.team_1)
         self.assertIsNone(c) 
-
-    # --------------------------------------------------------------------------------------
-
-    def test_transfer_budget(self):
-        # transfers player to team 2
-        self.league.do_transfer(self.Salah, self.team_2)
-        # records new teams budget after transfer
-        new_team_budget = self.team_1.get_transfer_budget()
-        # compares new_team_budget to what it should be
-        self.assertEqual(new_team_budget, 200000000)
 
     # --------------------------------------------------------------------------------------
     
@@ -156,11 +140,14 @@ class TestTransfer(unittest.TestCase):
     # --------------------------------------------------------------------------------------
 
     def test_show_transfers(self):
+        # intiate transfer
         t = self.league.do_transfer(self.Vardy, self.team_5)
+        # find transfer in show transfers
+        s = self.league.show_transfers()
 
-        t = self.league.show_transfers()
-
-        self.assertEqual(t, )
+        
+        # compare transfer in show_tranfers to string of what transfer should be
+        self.assertTrue()
 
 
 
